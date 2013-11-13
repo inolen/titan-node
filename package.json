@@ -1,0 +1,10 @@
+{
+  "name": "gremlin-titan",
+  "version": "0.0.1",
+  "dependencies": {
+    "gremlin": "git://github.com/inolen/gremlin-node.git#working"
+  },
+  "scripts": {
+    "install": "mvn clean package"
+  }
+}
