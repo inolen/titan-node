@@ -13,7 +13,7 @@ suite('sanity', function() {
   var g;
 
   suiteSetup(function() {
-    gremlin = new Gremlin();
+    gremlin = new Gremlin({ loglevel: 'OFF' });
   });
 
   setup(function() {

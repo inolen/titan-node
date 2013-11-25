@@ -5,6 +5,7 @@ var path = require('path');
 
 module.exports = function (opts) {
   opts = opts || {};
+  opts.loglevel = opts.loglevel || 'INFO';
   opts.classpath = opts.classpath || [];
   opts.options = opts.options || [];
 
@@ -71,6 +72,11 @@ module.exports = function (opts) {
       configurable: true
     }
   });
+
+  // set loglevel
+  gremlin.java.import('org.slf4j.LoggerFactory')
+    .getLoggerSync(gremlin.java.import('org.slf4j.Logger').ROOT_LOGGER_NAME)
+    .setLevelSync(gremlin.java.import('ch.qos.logback.classic.Level')[opts.loglevel]);
 
   return gremlin;
 };
