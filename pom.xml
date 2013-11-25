@@ -9,6 +9,7 @@
   <version>0.0.1</version>
 
   <properties>
+    <titan.version>0.4.1</titan.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
@@ -16,7 +17,7 @@
     <dependency>
       <groupId>com.thinkaurelius.titan</groupId>
       <artifactId>titan-all</artifactId>
-      <version>0.4.0</version>
+      <version>${titan.version}</version>
     </dependency>
   </dependencies>
 
