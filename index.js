@@ -23,5 +23,54 @@ module.exports = function (opts) {
   opts.options.push('-XX:+UseCMSInitiatingOccupancyOnly');
   opts.options.push('-XX:+UseTLAB');
 
-  return new Gremlin(opts);
+  // initialize
+  var gremlin = new Gremlin(opts);
+
+  // add Titan-specific data types to the gremlin context, and to the gremlin exports
+  var HashSet = gremlin.java.import('java.util.HashSet');
+  var imports = new HashSet();
+  imports.addSync('com.thinkaurelius.titan.core.Order');
+  imports.addSync('com.thinkaurelius.titan.core.attribute.Cmp');
+  imports.addSync('com.thinkaurelius.titan.core.attribute.Contain');
+  imports.addSync('com.thinkaurelius.titan.core.attribute.Geo');
+  imports.addSync('com.thinkaurelius.titan.core.attribute.Geoshape');
+  imports.addSync('com.thinkaurelius.titan.core.attribute.Text');
+  gremlin.java.callStaticMethodSync('com.tinkerpop.gremlin.groovy.jsr223.DefaultImportCustomizerProvider', 'initializeStatically', imports, null);
+
+  gremlin.Order = gremlin.java.import('com.thinkaurelius.titan.core.Order');
+  gremlin.Cmp = gremlin.java.import('com.thinkaurelius.titan.core.attribute.Cmp');
+  gremlin.Contain = gremlin.java.import('com.thinkaurelius.titan.core.attribute.Contain');
+  gremlin.Geo = gremlin.java.import('com.thinkaurelius.titan.core.attribute.Geo');
+  gremlin.Geoshape = gremlin.java.import('com.thinkaurelius.titan.core.attribute.Geoshape');
+  gremlin.Order = gremlin.java.import('com.thinkaurelius.titan.core.Order');
+  gremlin.Text = gremlin.java.import('com.thinkaurelius.titan.core.attribute.Text');
+
+  Object.defineProperties(Gremlin.GraphWrapper.prototype, {
+    Order: {
+      get: function () { return this.gremlin.Order; },
+      configurable: true
+    },
+    Cmp: {
+      get: function () { return this.gremlin.Cmp; },
+      configurable: true
+    },
+    Contain: {
+      get: function () { return this.gremlin.Contain; },
+      configurable: true
+    },
+    Geo: {
+      get: function () { return this.gremlin.Geo; },
+      configurable: true
+    },
+    Geoshape: {
+      get: function () { return this.gremlin.Geoshape; },
+      configurable: true
+    },
+    Text: {
+      get: function () { return this.gremlin.Text; },
+      configurable: true
+    }
+  });
+
+  return gremlin;
 };
