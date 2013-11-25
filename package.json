@@ -1,10 +1,38 @@
 {
-  "name": "gremlin-titan",
+  "name": "titan-node",
+  "description": "Wrapper project around gremlin-node to provide out of the box support for the Titan graph database.",
+  "keywords": [
+    "graph",
+    "database",
+    "tinkerpop",
+    "gremlin",
+    "blueprints",
+    "titan"
+  ],
   "version": "0.0.1",
-  "dependencies": {
-    "gremlin": "git://github.com/inolen/gremlin-node.git#working"
+  "homepage": "https://github.com/inolen/titan-node",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Anthony Pesch",
+      "email": "inolen@gmail.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/inolen/titan-node.git"
   },
+  "readmeFilename": "README.md",
   "scripts": {
-    "install": "mvn clean package"
+    "test": "make test",
+    "install": "make package"
+  },
+  "dependencies": {
+    "gremlin": "~0.2.0"
+  },
+  "devDependencies": {
+    "mocha": "~1.14.0",
+    "jshint": "~2.3.0",
+    "temp": "~0.6.0"
   }
 }

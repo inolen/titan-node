@@ -1,0 +1,17 @@
+{
+  "eqeqeq": true,
+  "indent": 2,
+  "node": true,
+  "quotmark": "single",
+  "shadow": true,
+  "strict": true,
+  "trailing": true,
+  "globals": {
+    "suite": true,
+    "test": true,
+    "suiteSetup": true,
+    "setup": true,
+    "suiteTeardown": true,
+    "teardown": true
+  }
+}
