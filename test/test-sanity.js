@@ -2,7 +2,7 @@
 
 var assert = require('assert');
 var temp = require('temp');
-var Gremlin = require('../index');
+var Gremlin = require('../lib/titan-gremlin');
 
 // make sure we cleanup temporary files at exit
 temp.track();
