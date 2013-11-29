@@ -22,7 +22,6 @@
     "type": "git",
     "url": "https://github.com/inolen/titan-node.git"
   },
-  "main": "lib/titan-gremlin.js",
   "readmeFilename": "README.md",
   "scripts": {
     "test": "make test",

@@ -7,7 +7,7 @@ var Gremlin = require('../lib/titan-gremlin');
 // make sure we cleanup temporary files at exit
 temp.track();
 
-suite('sanity', function() {
+suite('titan-graph-wrapper', function() {
   var gremlin;
   var graph;
   var g;
@@ -22,17 +22,14 @@ suite('sanity', function() {
     g = gremlin.wrap(graph);
   });
 
-  test('Who is Saturn\'s grandchild?', function (done) {
-    g.V('name', 'saturn').next(function (err, saturn) {
-      assert(!err && saturn);
-      
-      g.start(saturn).in('father').in('father').next(function (err, grandchild) {
-        assert(!err && grandchild);
+  test('getVertex(key, value)', function (done) {
+    g.getVertex('name', 'saturn', function (err, v) {
+      assert(!err && v);
 
-        grandchild.getProperty('name', function (err, name) {
-          assert(!err && name === 'hercules');
-          done();
-        });
+      v.getProperty('name', function (err, name) {
+        assert(!err && name === 'saturn');
+
+        done();
       });
     });
   });

@@ -19,8 +19,8 @@ $ npm install titan-node
 ## Quick start
 
 ```javascript
-var Gremlin = require('titan-node');
-var gremlin = new Gremlin({ loglevel: 'OFF' });
+var Titan = require('titan-node');
+var gremlin = new Titan.Gremlin({ loglevel: 'OFF' });
 
 var GraphOfTheGodsFactory = gremlin.java.import('com.thinkaurelius.titan.example.GraphOfTheGodsFactory');
 
