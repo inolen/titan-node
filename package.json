@@ -9,7 +9,7 @@
     "blueprints",
     "titan"
   ],
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/inolen/titan-node",
   "license": "MIT",
   "authors": [
@@ -28,7 +28,7 @@
     "install": "make package"
   },
   "dependencies": {
-    "gremlin": "~0.2.0"
+    "gremlin": "~0.3.0"
   },
   "devDependencies": {
     "mocha": "~1.14.0",
