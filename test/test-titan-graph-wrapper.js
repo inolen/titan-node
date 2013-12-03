@@ -33,4 +33,34 @@ suite('titan-graph-wrapper', function() {
       });
     });
   });
+
+  test('makeKey(name) unique', function (done) {
+    g.makeKey('extra_id').dataType(gremlin.ClassTypes.Integer).indexed(gremlin.ClassTypes.Vertex).unique().make(function (err) {
+      assert(!err);
+      g.getType('extra_id', function (err, type) {
+        assert(!err && type);
+        done();
+      });
+    });
+  });
+
+  test('makeKey(name) single', function (done) {
+    g.makeKey('gender').dataType(gremlin.ClassTypes.Integer).indexed('search', gremlin.ClassTypes.Vertex).single().make(function (err) {
+      assert(!err);
+      g.getType('gender', function (err, type) {
+        assert(!err && type);
+        done();
+      });
+    });
+  });
+
+  test('makeKey(name) geo', function (done) {
+    g.makeKey('pos').dataType(gremlin.ClassTypes.Geoshape).indexed('search', gremlin.ClassTypes.Vertex).single().make(function (err) {
+      assert(!err);
+      g.getType('pos', function (err, type) {
+        assert(!err && type);
+        done();
+      });
+    });
+  });
 });
