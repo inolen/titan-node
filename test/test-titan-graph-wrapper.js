@@ -22,13 +22,23 @@ suite('titan-graph-wrapper', function() {
     g = gremlin.wrap(graph);
   });
 
+  test('getVertex(id)', function (done) {
+    g.getVertex('name', 'saturn', function (err, v1) {
+      assert(!err && v1);
+
+      g.getVertex(v1.getId(), function (err, v2) {
+        assert(!err && v2);
+        done();
+      });
+    });
+  });
+
   test('getVertex(key, value)', function (done) {
     g.getVertex('name', 'saturn', function (err, v) {
       assert(!err && v);
 
       v.getProperty('name', function (err, name) {
         assert(!err && name === 'saturn');
-
         done();
       });
     });

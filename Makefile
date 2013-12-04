@@ -9,4 +9,4 @@ lint:
 	find lib test -name "*.js" | xargs node_modules/jshint/bin/jshint
 
 test:
-	node_modules/mocha/bin/mocha --reporter progress --ui tdd
+	node_modules/mocha/bin/mocha --reporter spec --ui tdd
