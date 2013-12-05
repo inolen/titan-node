@@ -28,7 +28,7 @@
     "install": "make package"
   },
   "dependencies": {
-    "gremlin": "~0.3.0"
+    "gremlin": "~0.3.11"
   },
   "devDependencies": {
     "mocha": "~1.14.0",
