@@ -35,3 +35,26 @@ g.V('name', 'saturn').next(function (err, saturn) {
   });
 });
 ```
+
+## The Graph of the Gods
+
+These examples will attempt to mimic [Getting Started](https://github.com/thinkaurelius/titan/wiki/Getting-Started) from the Titan wiki using the graph visualized below. ![The Graph of the Gods](https://raw.githubusercontent.com/wiki/thinkaurelius/titan/images/graph-of-the-gods-2.png)
+
+Error handling is omitted to keep the code readable.
+
+```javascript
+> g.V('name', 'saturn').next(function (err, vertex) {
+    saturn = vertex;
+    console.log(saturn.toJSON());
+  });
+
+{ id: '4' }
+
+> g.V('name', 'saturn').map().next(function (err, properties) {
+    console.log(properties);
+  });
+
+{ name: 'saturn', age: 10000, type: 'titan' }
+
+
+```
