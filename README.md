@@ -85,4 +85,6 @@ hercules
 > g.E().has('place', g.Geo.WITHIN, g.Geoshape.circleSync(37.97,23.72,50)).next(function(err, val) {
     console.log(val.toJSON());
   });
+
+{ id: '6J-o-2i' }
 ```
