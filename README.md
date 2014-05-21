@@ -29,8 +29,62 @@ var g = gremlin.wrap(graph);
 
 g.V('name', 'saturn').next(function (err, saturn) {
   g.start(saturn).in('father').in('father').next(function (err, grandchild) {
-    var name = grandchild.getPropertySync('name');
-    console.log(name);
+    grandchild.getProperty('name', function(err, name)  {
+      console.log(name);
+    });
   });
 });
+```
+
+## The Graph of the Gods
+
+These examples will attempt to mimic [Getting Started](https://github.com/thinkaurelius/titan/wiki/Getting-Started) from the Titan wiki using the graph visualized below.
+
+![The Graph of the Gods](https://raw.githubusercontent.com/wiki/thinkaurelius/titan/images/graph-of-the-gods-2.png)
+
+Error handling is omitted to keep the code readable.
+
+>> gremlin> saturn = g.V('name','saturn').next()
+
+```javascript
+> g.V('name', 'saturn').next(function (err, vertex) {
+    console.log(vertex.toJSON());
+  });
+
+{ id: '4' }
+```
+
+
+>> gremlin> saturn.map()
+
+```javascript
+> g.V('name', 'saturn').map().next(function (err, properties) {
+    console.log(properties);
+  });
+
+{ name: 'saturn', age: 10000, type: 'titan' }
+```
+
+
+>> gremlin> saturn.in('father').in('father').name
+
+```javascript
+> g.V('name', 'saturn').in('father').in('father').next(function(err, vertex) {
+    vertex.getProperty('name', function(err, value) {
+      console.log(value);
+    });
+  });
+
+hercules
+```
+
+
+>> gremlin> g.E.has('place',WITHIN,Geoshape.circle(37.97,23.72,50))
+
+```javascript
+> g.E().has('place', g.Geo.WITHIN, g.Geoshape.circleSync(37.97,23.72,50)).next(function(err, val) {
+    console.log(val.toJSON());
+  });
+
+{ id: '6J-o-2i' }
 ```
