@@ -44,7 +44,7 @@ These examples will attempt to mimic [Getting Started](https://github.com/thinka
 
 Error handling is omitted to keep the code readable.
 
-gremlin> saturn = g.V('name','saturn').next()
+>> gremlin> saturn = g.V('name','saturn').next()
 ```javascript
 > g.V('name', 'saturn').next(function (err, vertex) {
     console.log(vertex.toJSON());
