@@ -45,6 +45,7 @@ These examples will attempt to mimic [Getting Started](https://github.com/thinka
 Error handling is omitted to keep the code readable.
 
 >> gremlin> saturn = g.V('name','saturn').next()
+
 ```javascript
 > g.V('name', 'saturn').next(function (err, vertex) {
     console.log(vertex.toJSON());
@@ -53,7 +54,9 @@ Error handling is omitted to keep the code readable.
 { id: '4' }
 ```
 
-gremlin> saturn.map()
+
+>> gremlin> saturn.map()
+
 ```javascript
 > g.V('name', 'saturn').map().next(function (err, properties) {
     console.log(properties);
@@ -62,7 +65,9 @@ gremlin> saturn.map()
 { name: 'saturn', age: 10000, type: 'titan' }
 ```
 
-gremlin> saturn.in('father').in('father').name
+
+>> gremlin> saturn.in('father').in('father').name
+
 ```javascript
 > g.V('name', 'saturn').in('father').in('father').next(function(err, vertex) {
     vertex.getProperty('name', function(err, value) {
@@ -73,7 +78,9 @@ gremlin> saturn.in('father').in('father').name
 hercules
 ```
 
-gremlin> g.E.has('place',WITHIN,Geoshape.circle(37.97,23.72,50))
+
+>> gremlin> g.E.has('place',WITHIN,Geoshape.circle(37.97,23.72,50))
+
 ```javascript
 > g.E().has('place', g.Geo.WITHIN, g.Geoshape.circleSync(37.97,23.72,50)).next(function(err, val) {
     console.log(val.toJSON());
