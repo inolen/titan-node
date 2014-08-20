@@ -29,8 +29,9 @@ var g = gremlin.wrap(graph);
 
 g.V('name', 'saturn').next(function (err, saturn) {
   g.start(saturn).in('father').in('father').next(function (err, grandchild) {
-    var name = grandchild.getPropertySync('name');
-    console.log(name);
+    grandchild.getProperty('name', function(err, name){
+      console.log(name);
+    });
   });
 });
 ```
